@@ -1,0 +1,52 @@
+# =========================
+# Node / React / Vite
+# =========================
+node_modules/
+dist/
+.vite/
+
+# =========================
+# Python / Flask
+# =========================
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.local
+.env.production
+
+# =========================
+# SQLite Database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# OS & Editor Files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Media / Temp Files
+# =========================
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.png
+*.jpeg

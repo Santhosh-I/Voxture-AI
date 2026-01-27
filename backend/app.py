@@ -15,26 +15,24 @@ init_db()
 
 @app.route("/sign", methods=["POST"])
 def sign_to_text():
-    try:
-        data = request.json
-        image_data = data["image"].split(",")[1]
-        image_bytes = base64.b64decode(image_data)
+    data = request.json
+    image_data = data["image"].split(",")[1]
+    image_bytes = base64.b64decode(image_data)
 
-        np_arr = np.frombuffer(image_bytes, np.uint8)
-        image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+    np_arr = np.frombuffer(image_bytes, np.uint8)
+    image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
-        gesture = recognize_sign(image)
+    gesture, processed_image = recognize_sign(image)
 
-        conn = sqlite3.connect("voxture.db")
-        c = conn.cursor()
-        c.execute("INSERT INTO gestures (gesture) VALUES (?)", (gesture,))
-        conn.commit()
-        conn.close()
+    _, buffer = cv2.imencode(".jpg", processed_image)
+    img_base64 = base64.b64encode(buffer).decode("utf-8")
 
-        return jsonify({"gesture": gesture})
+    return jsonify({
+        "gesture": gesture,
+        "image": f"data:image/jpeg;base64,{img_base64}"
+    })
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+
 
 
 if __name__ == "__main__":

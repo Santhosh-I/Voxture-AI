@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import "../styles/gesture.css";
 
-function Gesture() {
+function Gesture({ onNavigate }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const intervalRef = useRef(null);
@@ -148,7 +148,12 @@ function Gesture() {
           <button className="nav-btn">Use cases</button>
         </nav>
         <div className="header-actions">
-          <button className="btn-secondary">Log In</button>
+          <button 
+            className="btn-secondary"
+            onClick={() => onNavigate('login')}
+          >
+            Log In
+          </button>
           <button className="btn-primary">Book a Demo</button>
         </div>
       </header>

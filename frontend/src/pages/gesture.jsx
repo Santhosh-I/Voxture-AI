@@ -20,6 +20,30 @@ function Gesture() {
     setCameraOn(true);
   };
 
+  const stopCamera = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const tracks = videoRef.current.srcObject.getTracks();
+      tracks.forEach(track => track.stop());
+      videoRef.current.srcObject = null;
+    }
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setCameraOn(false);
+    setResult("—");
+    setProcessedImage(null);
+    predictionBuffer.current = [];
+  };
+
+  const toggleCamera = () => {
+    if (cameraOn) {
+      stopCamera();
+    } else {
+      startCamera();
+    }
+  };
+
   const stabilizePrediction = (newPrediction) => {
     const buffer = predictionBuffer.current;
     buffer.push(newPrediction);
@@ -118,12 +142,10 @@ function Gesture() {
           Effortless hand gesture detection happening automatically with AI precision.
         </p>
 
-        {!cameraOn && (
-          <button onClick={startCamera} className="cta-button">
-            <span className="cta-glow"></span>
-            Start Camera
-          </button>
-        )}
+        <button onClick={toggleCamera} className="cta-button">
+          <span className="cta-glow"></span>
+          {cameraOn ? "Stop Camera" : "Start Camera"}
+        </button>
       </section>
 
       {/* Main Content Cards */}

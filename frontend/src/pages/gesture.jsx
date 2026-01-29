@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import "../styles/gesture.css";
+import NavBar from "../components/NavBar";
 
 function Gesture({ onNavigate }) {
   const videoRef = useRef(null);
@@ -138,25 +139,7 @@ function Gesture({ onNavigate }) {
       <div className="bg-dots"></div>
 
       {/* Header */}
-      <header className="header">
-        <div className="logo">Voxture-AI</div>
-        <nav className="nav">
-          <button className="nav-btn active">
-            <span className="icon">🏠</span> Home
-          </button>
-          <button className="nav-btn">Product</button>
-          <button className="nav-btn">Use cases</button>
-        </nav>
-        <div className="header-actions">
-          <button 
-            className="btn-secondary"
-            onClick={() => onNavigate('login')}
-          >
-            Log In
-          </button>
-          <button className="btn-primary">Book a Demo</button>
-        </div>
-      </header>
+      <NavBar currentPage="gesture" onNavigate={onNavigate} />
 
       {/* Hero Section */}
       <section className="hero">

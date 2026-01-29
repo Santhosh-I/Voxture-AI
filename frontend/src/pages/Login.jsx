@@ -28,13 +28,13 @@ function Login({ onNavigate }) {
         return;
       }
       console.log("Sign up data:", formData);
-      onNavigate('gesture');
+      onNavigate('home');
     } else {
       console.log("Login data:", {
         email: formData.email,
         password: formData.password,
       });
-      onNavigate('gesture');
+      onNavigate('home');
     }
   };
 

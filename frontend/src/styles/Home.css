@@ -184,6 +184,13 @@
   color: #a855f7;
   margin-bottom: 1.5rem;
   width: fit-content;
+  animation: float-badge 3s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .hero-title {

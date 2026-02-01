@@ -142,23 +142,43 @@ function Gesture({ onNavigate }) {
       <NavBar currentPage="gesture" onNavigate={onNavigate} />
 
       {/* Hero Section */}
-      <section className="hero">
-        <div className="badge">
-          <span className="badge-icon">✨</span> Smart Recognition
-        </div>
-        <h1 className="hero-title">
-          Real-Time Sign Language
-          <br />
-          <span className="gradient-text">AI Recognition!</span>
-        </h1>
-        <p className="hero-subtitle">
-          Effortless hand gesture detection happening automatically with AI precision.
-        </p>
+      <section className="gesture-hero">
+        <div className="gesture-hero-content">
+          <div className="gesture-badge">
+            <span className="gesture-badge-icon">✨</span>
+            <span>AI-Powered Recognition</span>
+          </div>
 
-        <button onClick={toggleCamera} className="cta-button">
-          <span className="cta-glow"></span>
-          {cameraOn ? "Stop Camera" : "Start Camera"}
-        </button>
+          <h1 className="gesture-hero-title">
+            Real-Time Sign Language
+            <br />
+            <span className="gesture-gradient-text">AI Recognition!</span>
+          </h1>
+
+          <p className="gesture-hero-subtitle">
+            Effortless hand gesture detection happening automatically with AI precision.
+          </p>
+
+          <div className="gesture-hero-buttons">
+            <button 
+              onClick={toggleCamera} 
+              className={`gesture-cta-button primary ${cameraOn ? "active" : ""}`}
+            >
+              <span className="gesture-cta-glow"></span>
+              {cameraOn ? "🛑 Stop Camera" : "🎥 Start Camera"}
+            </button>
+          </div>
+        </div>
+
+        <div className="gesture-hero-visual">
+          <div className="gesture-visual-card">
+            <div className="gesture-hand-icon">✋</div>
+            <div className="gesture-ai-badge">
+              <span className="gesture-ai-dot"></span>
+              <span>AI Active</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Main Content Cards */}

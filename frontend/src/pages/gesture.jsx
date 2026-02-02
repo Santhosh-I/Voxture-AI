@@ -186,23 +186,40 @@ function Gesture({ onNavigate }) {
         {/* Live Camera Feed Card */}
         <div className="card card-orange">
           <div className="card-header">
-            <h3>Live Camera Feed</h3>
+            <h3>Live AI Processing</h3>
             <div className="status-indicator">
               <div className={`status-dot ${cameraOn ? "active" : ""}`}></div>
-              {cameraOn ? "Active" : "Inactive"}
+              {cameraOn ? "Processing" : "Inactive"}
             </div>
           </div>
 
           <div className="video-container">
+            {/* Hidden video for capture */}
             <video
               ref={videoRef}
               autoPlay
-              className="video-feed"
+              className="video-feed hidden"
+              style={{ display: 'none' }}
             />
-            {!cameraOn && (
+            
+            {/* Show processed image with hand landmarks or placeholder */}
+            {cameraOn && processedImage ? (
+              <img
+                src={processedImage}
+                alt="Live Hand Detection with Landmarks"
+                className="video-feed processed-live-feed"
+              />
+            ) : cameraOn ? (
+              <div className="processing-live">
+                <div className="processing-icon">🤖</div>
+                <p>Processing live video...</p>
+                <div className="processing-hint">Hand landmarks will appear here</div>
+              </div>
+            ) : (
               <div className="video-placeholder">
                 <div className="placeholder-icon">📹</div>
-                <p>Camera feed will appear here</p>
+                <p>Live AI processing will appear here</p>
+                <div className="placeholder-hint">Hand landmarks and points</div>
               </div>
             )}
           </div>

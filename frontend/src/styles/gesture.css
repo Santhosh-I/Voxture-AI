@@ -478,6 +478,59 @@
   border-radius: 16px;
 }
 
+.video-feed.hidden {
+  display: none !important;
+}
+
+.processed-live-feed {
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+    border-color: rgba(16, 185, 129, 0.6);
+  }
+}
+
+.processing-live {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+}
+
+.processing-live .processing-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: processing-bounce 2s ease-in-out infinite;
+}
+
+@keyframes processing-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.processing-live p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.processing-live .processing-hint {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .video-placeholder {
   display: flex;
   flex-direction: column;
@@ -491,6 +544,12 @@
   font-size: 48px;
   margin-bottom: 15px;
   opacity: 0.5;
+}
+
+.placeholder-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 8px;
 }
 
 /* Result Badge */
